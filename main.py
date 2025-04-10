@@ -100,10 +100,10 @@ app = FastAPI(title="OCR Detection Service", lifespan=lifespan)
 
 
 @app.post("/ocr")
-async def run_ocr():
+async def run_ocr(path: str):
     start_time = time.time()
-    image_path = "example.png"
-    image = cv2.imread(image_path)
+    # image_path = "example.png"
+    image = cv2.imread(path)
     if image is None:
         raise ValueError("Image could not be loaded")
     ocr_data = OcrData(image=image)
